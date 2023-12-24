@@ -5,7 +5,6 @@ import { Student } from "@/utils/types/user";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-
 //  A L L   S T U D E N T   P A G E    with      S T U D E N T - L I S T
 export default function Page() {
 

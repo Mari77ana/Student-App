@@ -30,7 +30,6 @@ const Page = () => {
           event.target.type === "number" ? parseFloat(event.target.value): event.target.value
           
         })
-        console.log(formData)
       }
 
       /*
