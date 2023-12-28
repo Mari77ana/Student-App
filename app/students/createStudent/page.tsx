@@ -54,8 +54,10 @@ const Page = () => {
       const courseHandleChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault()
         const courseValue: string = event.target.value
-        const courseNames: string []=  courseValue.split(",").map(courseName => courseName.trim()) as string[]
-
+        // Studenten kan mata in flera kurser, as string = typsäkerhet
+        const courseNames: string [] =  courseValue.split(",").map(courseName => courseName.trim()) as string[]
+        
+        // Nytt objekt skapas med nya kurser fr inmatningen. Teacher, courseCredit blir default
         const coursesArray: Course[] = courseNames.map(courseName => ({
           name: courseName,
           teacher: "Mark Zuckerberg",
@@ -84,7 +86,7 @@ const Page = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        //body: JSON.stringify(formData),
+        
         body: JSON.stringify(formData),
         
         
