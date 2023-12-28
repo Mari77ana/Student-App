@@ -92,9 +92,6 @@ export async function PUT(request: NextRequest) {
 
 
 
-
-
-
 // D E L E T E    S T U D E N T  by ID
 export async function DELETE(request: NextApiRequest) {
    // tog bort  await dbConnect();
