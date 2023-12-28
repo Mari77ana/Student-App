@@ -52,7 +52,7 @@ const Page = () => {
 
 
       const courseHandleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        event.preventDefault
+        event.preventDefault()
         const courseValue: string = event.target.value
         const courseNames: string []=  courseValue.split(",").map(courseName => courseName.trim()) as string[]
 
