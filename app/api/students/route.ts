@@ -11,8 +11,8 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
    // tog bort  await dbConnect()
   try {
-     // {destructionary} ->  await -> invänta värden Parse JSON from request body
-    const {name, email, age, course}: Student = await request.json() // 
+     // {destructionary} ->  await -> hämtar  Json datan from request body
+    const {name, email, age, course}: Student = await request.json() // får tillgång till attributerna
 
     console.log("Receive data:", {name, email, age, course})
 
@@ -43,8 +43,6 @@ export async function POST(request: NextRequest) {
 
 
       
-
-
 //  C R E A T E   G E T ,   A L L   S T U D E N T S 
 export async function GET() {
  
