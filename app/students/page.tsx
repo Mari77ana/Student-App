@@ -5,16 +5,17 @@ import { Student } from "@/utils/types/user";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-//  A L L   S T U D E N T   P A G E    with      S T U D E N T - L I S T
+//  S H O W   A L L   S T U D E N T   P A G E  in  a   S T U D E N T - L I S T
+
 export default function Page() {
 
     // H Ä M T A   A L L A   S T U D E N T S  fr  DB med fetch och useEffect (visas en gång)
-    const [students, setStudents] = useState<Student[]>([])
+    const [students, setStudents] = useState<Student[]>([]) // array behövs för att spara alla studenter i
 
     useEffect(() => {
         const fetchData = async () => {
             try{
-                // fetch -> api backend/ show in /students page
+                // fetch -> för att hämta alla studenter via backend metoden GET
                 const response = await fetch("/api/students", { 
                     method: "GET",
                     headers: {
@@ -25,7 +26,7 @@ export default function Page() {
                 
                 if (response.ok){
                     const result = await response.json()
-                    setStudents(result.allUsers)
+                    setStudents(result.allUsers) // all studenter
                     console.log("Fetch OK", response.ok)
                 }
 
@@ -42,10 +43,12 @@ export default function Page() {
 
 
     //  D E L E T E   S T U D E N T   B Y   I D 
+
+    // funktion deleteStudentById med parametern id
     const deleteStudentById = async (id: number) => {
         try{
-             
-            const response = await fetch(`/api/students/${id}`, {
+        // fetch för en delete begäran mot backend för att ta bort specifik användare med hjälp av id
+            const response = await fetch(`/api/students/${id}`, { 
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -54,7 +57,7 @@ export default function Page() {
 
             if (response.ok){
                 const result = await response.json();
-                setStudents(result.allUsers);
+                setStudents(result.allUsers);// om success uppdateras alla studenter
             }
             else{
                 const error = await response.json()
@@ -69,7 +72,8 @@ export default function Page() {
     }
     
     
-
+   // Tabell för varje students information med en knapp och en länk. 
+   //.map() används för att få ut varje unik student
   return (
     <div>
     
@@ -104,7 +108,7 @@ export default function Page() {
                                 ))}
                             </ul>
                             <td>
-                                {/**  Navigate to student id Page*/}
+                                {/**  Navigerar till id page.tsx för att updatera en student */}
                             <Link href={`/students/${student._id}`}
                             className="bg-indigo-700 hover:bg-violet-800 text-white font-bold py-2 px-2 rounded-full">
                                 Update</Link>
