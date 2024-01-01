@@ -9,7 +9,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 // C R E A T E   S T U D E N T  P A G E   m  Form
 const Page = () => {
   const router = useRouter(); // Navigerar 
-
+    // Student mallen med tomma värden
     const [formData, setFormData] = useState<Student>({
         name: "",
         email: "",
@@ -74,7 +74,7 @@ const Page = () => {
 
       }
 
-
+   // fetch görs för att skicka datan fr formuläret till backend för att skapa en ny student
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
 
@@ -157,7 +157,7 @@ const Page = () => {
     type="text"
     id="course"
     name="course"
-    placeholder="Kurs 1, Kurs 2, Kurs 3"
+    placeholder="Cours 1, Cours 2, Cours 3"
     value={formData.course.map(c => c.name).join(",")}
     onChange={courseHandleChange}
     required />
