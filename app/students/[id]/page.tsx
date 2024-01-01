@@ -7,10 +7,11 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 
 
-// STUDENT ID Page
+//  UPDATE STUDENT Page with Form
 export default function Page({params}:{params:{id: string}}) { // props skicka datan 
 
     const [formData, setFormData] = useState<Student>({
+      
         name: "",
         email: "",
         age: 0,
@@ -26,7 +27,7 @@ export default function Page({params}:{params:{id: string}}) { // props skicka d
       const router = useRouter(); // Navigerar 
 
       // Hämtar user id med useEffect så att det visas på denna sida i formuläret
-      // useEffect hämtar anrop mot backend och hämtar user med id genom att vi skickar props
+      // useEffect hämtar anrop mot backend och hämtar user med id genom att skicka props
       useEffect(() => {
 
         const fetchStudent = async () => {
@@ -72,6 +73,8 @@ export default function Page({params}:{params:{id: string}}) { // props skicka d
         console.log(id);
         event.preventDefault()
 
+
+        // Uppdaterar de nya värderna 
         const updatedStudent: Student = {
           name: formData.name,
           email: formData.email,
@@ -137,15 +140,15 @@ export default function Page({params}:{params:{id: string}}) { // props skicka d
 
   return (
     <>
-    <div>
+    <div className="">
      
-      <div className="flex flex-col justify-center items-center opacity-40 mt-10 ">
+      <div className="flex flex-col justify-center items-center opacity-50 mt-10 ">
       <p className="text-2xl"> UPDATE HERE </p>
       </div>
 
-      <div className="flex flex-col justify-center items-center opacity-40 h-screen">
+      <div className="flex flex-col justify-center items-center opacity-50 h-screen">
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center space-y-3">
         <label htmlFor="name">Namn</label>
           <input
           className="p-2 rounded-sm"
